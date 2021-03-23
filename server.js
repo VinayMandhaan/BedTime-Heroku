@@ -4,7 +4,7 @@ const engines = require("consolidate");
 
 const app = express()
 const path  = require('path')
-const port  = process.env.port || 5000
+const port  = process.env.PORT || 5000
 // var multer = require('multer')
 
 const connectDB = require('./config/db')
