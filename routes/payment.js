@@ -191,8 +191,8 @@ router.post(
             payment_method: "paypal"
         },
         redirect_urls: {
-            return_url: "http://192.168.1.106:5000/api/payment/success",
-            cancel_url: "http://192.168.1.106:5000/api/payment/cancel"
+            return_url: "https://bedtimeserver.herokuapp.com/api/payment/success",
+            cancel_url: "https://bedtimeserver.herokuapp.com/api/payment/cancel"
         },
         transactions: [
             {
