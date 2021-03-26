@@ -188,7 +188,7 @@ async (req, res) => {
           let contents =  await  Content.aggregate(
                 
                 [
-                    { $match : { ...filter } },
+                    { $match : { ...filter  }},
                     {$unwind : "$likes"},
                     {
                         $group :
@@ -203,7 +203,8 @@ async (req, res) => {
                         "file_type": "$file_type",
                         "language": "$language",
                         "file": {$concat:[url,"$file"]},
-                        "file_image":  {$concat:[url,"$file_image"]}
+                        "file_image":  {$concat:[url,"$file_image"]},
+                        "isLiked":"false"
                         // "file_image": { $concat:[`${`url+"$file_image"`}]}
                        
                     }},
@@ -211,7 +212,10 @@ async (req, res) => {
                         count : {$sum : 1}
                      },
                     },
+                    // { $limit: 5 },
+                    { $match: {'count':  {$gte: 5} }}, 
                     {$sort : {'count': -1}},
+                    { $limit : 5 }
                 ]
                     
               )
@@ -221,21 +225,18 @@ async (req, res) => {
               }
               contents.forEach((item, index) => {
            
-                item.isliked="false"
+                // item.isliked="false"
                 
                    item.likes.forEach((like,index)=>{
                     if(like.user==req.user._id){
                         
                         console.log("usertrue")
-                        item.isliked="true"
+                        item.content[0].isliked="true"
                         
     
                     }
-                    // else{
-                    //     item.isliked = "false"
-                    // }
+                
                 })
-                                // console.log(image, index)
                             })
             
 
