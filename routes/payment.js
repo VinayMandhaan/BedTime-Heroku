@@ -8,17 +8,17 @@ const { SendPushNotification } = require('../utils/Notification')
 const paymentModel = require("../models/payment.model");
 const checkObjectId = require('../middleware/checkobjectId');
 const payment  =  require('../models/payment.model')
-const stripe = require("stripe")("sk_test_51IXUPEBGTHpfB5dWrRwWJRCYGiv3lqLJdT6eqegdCFNP4KFQRI1qjOlyget9rjUoqFpDTmGqU73IHSe10y9L3iDF00ZtY5Qo39");
+const stripe = require("stripe")("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");
 const User = require('../models/User.model')
 const paypal = require("paypal-rest-sdk");
 
 
 paypal.configure({
-  mode: "sandbox", //sandbox or live
+  mode: "live", //sandbox or live
   client_id:
-      "AVHkX5APqzDIaUpcDtjsccYv4LEsT8kDfuADTeWVKZgFFdfxo6qgT9jNejKdeqZfOYr9u-xNo7kzaQdJ",
+      "AbKhjV78H4AGC6u2KO0_2JJxWg8TbGLcMENVWMc0-OLHLl3unX3zfoZ7PVZbQW8TvokERSuiOWg8a8eE",
   client_secret:
-      "EE1OGbO-tZ2SE_wtmUrkQjy3EWC4mpjjeHpavchni27FvPa9OpiHj4lcnXlxVf1il3INaBGrIR2l9-yb"
+      "EGIkDTUCWefP6rm1Umm1HHPOxaVI-dypARXGZC26cNDvvCrgqtLdX9oQX9mT-Nffzq1A-TXBNuT1BsIt"
 });
 
 //get payment 
